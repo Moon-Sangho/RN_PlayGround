@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { TouchableOpacityProps } from 'react-native';
-import Txt from 'src/components/Txt';
+import Txt, { FontWeight } from 'src/components/Txt';
 
 type BtnProps = TouchableOpacityProps & {
   children: string;
-  color?: string;
-  backgroundColor?: string;
   width?: number;
   height?: number;
+  backgroundColor?: string;
+  color?: string;
+  fontSize?: number;
+  fontWeight?: FontWeight;
 };
 
 const Btn = ({
@@ -16,7 +18,9 @@ const Btn = ({
   width,
   height,
   backgroundColor,
-  color,
+  color = '#ffffff',
+  fontSize,
+  fontWeight,
   ...props
 }: BtnProps) => {
   return (
@@ -25,7 +29,9 @@ const Btn = ({
       height={height}
       backgroundColor={backgroundColor}
       {...props}>
-      <Txt color={color}>{children}</Txt>
+      <Txt color={color} fontSize={fontSize} fontWeight={fontWeight}>
+        {children}
+      </Txt>
     </Container>
   );
 };

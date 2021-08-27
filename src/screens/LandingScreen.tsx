@@ -14,9 +14,10 @@ const LandingScreen = ({ navigation }: Props) => {
         <Title>React-Native PlayGround</Title>
       </Header>
       <Container>
-        <Btn onPress={() => navigation.navigate('ChartScreen')} color="#ffffff">
-          차트
-        </Btn>
+        <TopContents />
+        <BottomContents>
+          <Btn onPress={() => navigation.navigate('ChartScreen')}>차트</Btn>
+        </BottomContents>
       </Container>
     </SafeAreaView>
   );
@@ -31,10 +32,16 @@ const Header = styled.View`
 
 const Title = styled(Txt)`
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 const Container = styled.View`
   justify-content: center;
   align-items: center;
+`;
+
+const TopContents = styled.View``;
+
+const BottomContents = styled.View`
+  margin-top: 300px;
 `;
