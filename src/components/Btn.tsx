@@ -45,10 +45,11 @@ const Container = styled.TouchableOpacity<{
 }>`
   justify-content: center;
   align-items: center;
-  width: ${({ width }) => (width ? width : '50px')};
-  height: ${({ height }) => (height ? height : '30px')};
+  width: ${({ width }) => (width ? `${width}px` : '50px')};
+  height: ${({ height }) => (height ? `${height}px` : '30px')};
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : '#2fb7b7'};
+  margin: 0 5px;
 `;

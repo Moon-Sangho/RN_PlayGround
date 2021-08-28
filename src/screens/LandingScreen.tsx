@@ -12,7 +12,6 @@ const LandingScreen = ({ navigation }: Props) => {
   return (
     <SafeAreaView>
       <Header>
-        <Title>React-Native PlayGround</Title>
         <LogoContainer>
           <LottieView
             source={require('assets/animations/react-logo.json')}
@@ -20,6 +19,7 @@ const LandingScreen = ({ navigation }: Props) => {
             loop
           />
         </LogoContainer>
+        <Title>React-Native PlayGround</Title>
       </Header>
       <Container>
         <TopContents>
@@ -31,6 +31,9 @@ const LandingScreen = ({ navigation }: Props) => {
         </TopContents>
         <BottomContents>
           <Btn onPress={() => navigation.navigate('ChartScreen')}>차트</Btn>
+          <Btn onPress={() => navigation.navigate('DropdownScreen')} width={80}>
+            드랍다운
+          </Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>
@@ -65,4 +68,6 @@ const TopContents = styled.View`
   height: 250px;
 `;
 
-const BottomContents = styled.View``;
+const BottomContents = styled.View`
+  flex-direction: row;
+`;
