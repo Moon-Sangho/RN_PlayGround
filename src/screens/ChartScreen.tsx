@@ -1,12 +1,20 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import styled from '@emotion/native';
+import { Text } from 'react-native';
 
 const ChartScreen = () => {
   return (
-    <SafeAreaView>
+    <Container>
       <Text>ChartScreen</Text>
-    </SafeAreaView>
+    </Container>
   );
 };
 
 export default ChartScreen;
+
+const Container = styled.SafeAreaView`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+`;

@@ -1,12 +1,20 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import styled from '@emotion/native';
+import { Text } from 'react-native';
 
 const DropdownScreen = () => {
   return (
-    <SafeAreaView>
+    <Container>
       <Text>DropdownScreen</Text>
-    </SafeAreaView>
+    </Container>
   );
 };
 
 export default DropdownScreen;
+
+const Container = styled.SafeAreaView`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+`;
