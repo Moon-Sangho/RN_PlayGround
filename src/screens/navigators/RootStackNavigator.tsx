@@ -5,6 +5,7 @@ import BackBtn from 'src/components/BackBtn';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
+import SVGScreen from 'src/screens/SVGScreen';
 
 const Stack = createStackNavigator<RootStackNavigator>();
 
@@ -15,6 +16,11 @@ const RootStackNavigator = () => {
         name="LandingScreen"
         component={LandingScreen}
         options={{ header: () => <View /> }}
+      />
+      <Stack.Screen
+        name="SVGScreen"
+        component={SVGScreen}
+        options={{ headerTitle: 'SVG', headerLeft: () => <BackBtn /> }}
       />
       <Stack.Screen
         name="ChartScreen"

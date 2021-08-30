@@ -30,6 +30,7 @@ const LandingScreen = ({ navigation }: Props) => {
           />
         </TopContents>
         <BottomContents>
+          <Btn onPress={() => navigation.navigate('SVGScreen')}>SVG</Btn>
           <Btn onPress={() => navigation.navigate('ChartScreen')}>차트</Btn>
           <Btn onPress={() => navigation.navigate('DropdownScreen')} width={80}>
             드랍다운
