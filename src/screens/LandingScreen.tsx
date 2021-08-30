@@ -71,4 +71,7 @@ const TopContents = styled.View`
 
 const BottomContents = styled.View`
   flex-direction: row;
+  justify-content: center;
+  width: 300px;
+  flex-wrap: wrap;
 `;
