@@ -3,4 +3,5 @@ type RootStackNavigator = {
   SVGScreen: undefined;
   ChartScreen: undefined;
   DropdownScreen: undefined;
+  SurveyScreen: undefined;
 };

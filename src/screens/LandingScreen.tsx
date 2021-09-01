@@ -35,6 +35,9 @@ const LandingScreen = ({ navigation }: Props) => {
           <Btn onPress={() => navigation.navigate('DropdownScreen')} width={80}>
             드랍다운
           </Btn>
+          <Btn onPress={() => navigation.navigate('SurveyScreen')} width={80}>
+            설문조사
+          </Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>
