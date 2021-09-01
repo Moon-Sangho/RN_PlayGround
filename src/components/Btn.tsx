@@ -66,6 +66,11 @@ const Btn = ({
 
 export default Btn;
 
+const SvgContainer = styled.TouchableOpacity<{ type: 'back' | 'close' }>`
+  ${({ type }) =>
+    type === 'back' ? 'padding-left: 24px' : 'padding-right: 24px'};
+`;
+
 const Container = styled.TouchableOpacity<{
   width?: number;
   height?: number;
@@ -80,9 +85,4 @@ const Container = styled.TouchableOpacity<{
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : '#2fb7b7'};
   margin: 5px;
-`;
-
-const SvgContainer = styled.TouchableOpacity<{ type: 'back' | 'close' }>`
-  ${({ type }) =>
-    type === 'back' ? 'padding-left: 24px' : 'padding-right: 24px'};
 `;

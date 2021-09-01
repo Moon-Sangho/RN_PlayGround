@@ -12,11 +12,11 @@ import SurveyScreen from 'src/screens/SurveyScreen';
 
 const Stack = createStackNavigator<RootStackNavigator>();
 
-type HeaderType = {
+type HeaderProps = {
   title: string;
 };
 
-const Header = ({ title }: HeaderType) => {
+const Header = ({ title }: HeaderProps) => {
   return (
     <HeaderContainer>
       <Btn type="back" />
