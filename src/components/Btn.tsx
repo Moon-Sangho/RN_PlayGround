@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from '@emotion/native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import backBtn from 'assets/images/back-btn.svg';
+import closeBtn from 'assets/images/close-btn.svg';
 import { TouchableOpacityProps } from 'react-native';
+import { SvgXml } from 'react-native-svg';
 import Txt, { FontWeight } from 'src/components/Txt';
 
 type BtnProps = TouchableOpacityProps & {
-  children: string;
+  type?: 'normal' | 'back' | 'close';
+  children?: string;
   width?: number;
   height?: number;
   backgroundColor?: string;
@@ -14,6 +20,7 @@ type BtnProps = TouchableOpacityProps & {
 };
 
 const Btn = ({
+  type = 'normal',
   children,
   width,
   height,
@@ -23,6 +30,27 @@ const Btn = ({
   fontWeight,
   ...props
 }: BtnProps) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackNavigator>>();
+
+  if (type === 'back') {
+    return (
+      <SvgContainer type={type} onPress={navigation.goBack} {...props}>
+        <SvgXml xml={backBtn} />
+      </SvgContainer>
+    );
+  }
+
+  if (type === 'close') {
+    return (
+      <SvgContainer
+        type={type}
+        onPress={() => navigation.navigate('LandingScreen')}
+        {...props}>
+        <SvgXml xml={closeBtn} />
+      </SvgContainer>
+    );
+  }
+
   return (
     <Container
       width={width}
@@ -30,7 +58,7 @@ const Btn = ({
       backgroundColor={backgroundColor}
       {...props}>
       <Txt color={color} fontSize={fontSize} fontWeight={fontWeight}>
-        {children}
+        {children ? children : ''}
       </Txt>
     </Container>
   );
@@ -52,4 +80,9 @@ const Container = styled.TouchableOpacity<{
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : '#2fb7b7'};
   margin: 5px;
+`;
+
+const SvgContainer = styled.TouchableOpacity<{ type: 'back' | 'close' }>`
+  ${({ type }) =>
+    type === 'back' ? 'padding-left: 24px' : 'padding-right: 24px'};
 `;

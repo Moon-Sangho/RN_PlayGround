@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { SafeAreaView } from 'react-native';
-import BackBtn from 'src/components/BackBtn';
 import Txt from 'src/components/Txt';
 
-const SurveyScren = () => {
+const SurveyScreen = () => {
   return (
     <SafeAreaView>
-      <BackBtn />
       <Container>
         <Txt>SurveyScren</Txt>
       </Container>
@@ -15,7 +13,7 @@ const SurveyScren = () => {
   );
 };
 
-export default SurveyScren;
+export default SurveyScreen;
 
 const Container = styled.SafeAreaView`
   flex: 1;
