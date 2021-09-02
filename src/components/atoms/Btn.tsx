@@ -2,12 +2,12 @@ import React from 'react';
 import styled from '@emotion/native';
 import backBtn from 'assets/images/back-btn.svg';
 import closeBtn from 'assets/images/close-btn.svg';
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import Txt, { FontWeight } from 'src/components/Txt';
+import Txt, { FontWeight } from 'src/components/atoms/Txt';
 
 type BtnProps = TouchableOpacityProps & {
-  type?: 'normal' | 'back' | 'close';
+  type?: 'normal' | 'back' | 'close' | 'bottomBtn';
   children?: string;
   width?: number;
   height?: number;
@@ -41,6 +41,16 @@ const Btn = ({
       <SvgContainer type={type} {...props}>
         <SvgXml xml={closeBtn} />
       </SvgContainer>
+    );
+  }
+
+  if (type === 'bottomBtn') {
+    return (
+      <TouchableOpacity {...props}>
+        <Txt color={color} fontSize={fontSize} fontWeight={fontWeight}>
+          {children ? children : ''}
+        </Txt>
+      </TouchableOpacity>
     );
   }
 

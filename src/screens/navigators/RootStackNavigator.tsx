@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Btn from 'src/components/Btn';
+import { View } from 'react-native';
+import Btn from 'src/components/atoms/Btn';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
@@ -48,7 +49,7 @@ const RootStackNavigator = () => {
         name="SurveyScreen"
         component={SurveyScreen}
         options={{
-          headerShown: false,
+          header: () => <View />,
         }}
       />
     </Stack.Navigator>

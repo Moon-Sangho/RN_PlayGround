@@ -1,25 +1,29 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { SafeAreaView } from 'react-native';
-import Header from 'src/components/Header';
-import Txt from 'src/components/Txt';
+import Txt from 'src/components/atoms/Txt';
+import Header from 'src/components/organisms/Header';
+import BottomBtnTemplate from 'src/components/templates/BottomBtnTemplate';
 
 const SurveyScreen = () => {
+  const onPress = () => {
+    console.log('test');
+  };
+
   return (
-    <SafeAreaView>
+    <BottomBtnTemplate btnProps={{ onPress }}>
       <Header title="설문조사" />
       <Container>
-        <Txt>SurveyScren</Txt>
+        <Txt>설문조사 화면</Txt>
       </Container>
-    </SafeAreaView>
+    </BottomBtnTemplate>
   );
 };
 
 export default SurveyScreen;
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  padding: 0 24px;
 `;

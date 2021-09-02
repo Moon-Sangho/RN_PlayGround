@@ -12,7 +12,7 @@ import Svg, {
   Rect,
   Stop,
 } from 'react-native-svg';
-import Txt from 'src/components/Txt';
+import Txt from 'src/components/atoms/Txt';
 
 const SVGScreen = () => {
   return (
