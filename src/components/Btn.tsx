@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import backBtn from 'assets/images/back-btn.svg';
 import closeBtn from 'assets/images/close-btn.svg';
 import { TouchableOpacityProps } from 'react-native';
@@ -30,11 +28,9 @@ const Btn = ({
   fontWeight,
   ...props
 }: BtnProps) => {
-  const navigation = useNavigation<StackNavigationProp<RootStackNavigator>>();
-
   if (type === 'back') {
     return (
-      <SvgContainer type={type} onPress={navigation.goBack} {...props}>
+      <SvgContainer type={type} {...props}>
         <SvgXml xml={backBtn} />
       </SvgContainer>
     );
@@ -42,10 +38,7 @@ const Btn = ({
 
   if (type === 'close') {
     return (
-      <SvgContainer
-        type={type}
-        onPress={() => navigation.navigate('LandingScreen')}
-        {...props}>
+      <SvgContainer type={type} {...props}>
         <SvgXml xml={closeBtn} />
       </SvgContainer>
     );
