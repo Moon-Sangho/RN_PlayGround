@@ -9,14 +9,18 @@ import Txt from 'src/components/atoms/Txt';
 type HeaderProps = SafeAreaViewProps & {
   title: string;
   height?: number;
+  onBackPress?: () => void;
 };
 
-const Header = ({ title, height, ...props }: HeaderProps) => {
+const Header = ({ title, height, onBackPress, ...props }: HeaderProps) => {
   const navigation = useNavigation<StackNavigationProp<RootStackNavigator>>();
 
   return (
     <HeaderContainer height={height} {...props}>
-      <Btn type="back" onPress={navigation.goBack} />
+      <Btn
+        type="back"
+        onPress={onBackPress ? onBackPress : navigation.goBack}
+      />
       <Txt fontSize={17}>{title}</Txt>
       <Btn type="close" onPress={() => navigation.navigate('LandingScreen')} />
     </HeaderContainer>
