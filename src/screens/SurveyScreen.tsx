@@ -3,7 +3,6 @@ import styled from '@emotion/native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { FlatList } from 'react-native';
 import Txt from 'src/components/atoms/Txt';
-import Header from 'src/components/organisms/Header';
 import BottomBtnTemplate from 'src/components/templates/BottomBtnTemplate';
 
 type Props = StackScreenProps<RootStackNavigator, 'SurveyScreen'>;
@@ -85,10 +84,11 @@ const SurveyScreen = ({ navigation }: Props) => {
 
   return (
     <BottomBtnTemplate
+      headerTitle="설문조사"
       btnProps={{ onPress }}
       btnText="결과 확인하기"
-      showBottomBtn={step === Steps.Step9 ? true : false}>
-      <Header title="설문조사" onBackPress={onBackPress} />
+      showBottomBtn={step === Steps.Step9 ? true : false}
+      onBackPress={onBackPress}>
       <Container>{handleForm()}</Container>
     </BottomBtnTemplate>
   );

@@ -3,23 +3,28 @@ import styled from '@emotion/native';
 import { TouchableOpacityProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Btn from 'src/components/atoms/Btn';
+import Header from 'src/components/organisms/Header';
 
 type Props = {
+  headerTitle: string;
   children: ReactNode;
   bottomBtnBackgroundColor?: string;
   disabled?: boolean;
   showBottomBtn?: boolean;
   btnText?: string;
   btnProps?: TouchableOpacityProps;
+  onBackPress?: () => void;
 };
 
 const BottomBtnTemplate = ({
+  headerTitle,
   children,
   bottomBtnBackgroundColor = '#313C54',
   disabled = false,
   showBottomBtn = true,
   btnText,
   btnProps,
+  onBackPress,
 }: Props) => {
   const backgroundColor = useMemo(() => {
     if (showBottomBtn) {
@@ -31,7 +36,10 @@ const BottomBtnTemplate = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor }} edges={['bottom']}>
-      <Children children={children} />
+      <Container>
+        <Header title={headerTitle} onBackPress={onBackPress} />
+        {children}
+      </Container>
       {showBottomBtn ? (
         <BottomBtn
           type="bottomBtn"
@@ -48,7 +56,7 @@ const BottomBtnTemplate = ({
 
 export default BottomBtnTemplate;
 
-const Children = styled.View`
+const Container = styled.View`
   flex: 1;
   background-color: #ffffff;
 `;
