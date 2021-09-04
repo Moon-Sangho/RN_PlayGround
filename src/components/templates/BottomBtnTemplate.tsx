@@ -1,5 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { TouchableOpacityProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Btn from 'src/components/atoms/Btn';
@@ -26,13 +27,14 @@ const BottomBtnTemplate = ({
   btnProps,
   onBackPress,
 }: Props) => {
+  const theme = useTheme();
   const backgroundColor = useMemo(() => {
     if (showBottomBtn) {
-      return disabled ? '#A8A8A8' : bottomBtnBackgroundColor;
+      return disabled ? `${theme.colors.disabled}` : bottomBtnBackgroundColor;
     } else {
-      return '#fff';
+      return `${theme.colors.white}`;
     }
-  }, [showBottomBtn, bottomBtnBackgroundColor, disabled]);
+  }, [showBottomBtn, theme, bottomBtnBackgroundColor, disabled]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor }} edges={['bottom']}>
@@ -58,7 +60,7 @@ export default BottomBtnTemplate;
 
 const Container = styled.View`
   flex: 1;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const BottomBtn = styled(Btn)<{ backgroundColor?: string }>`

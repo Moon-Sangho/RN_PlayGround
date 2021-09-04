@@ -112,8 +112,8 @@ const Card = styled.TouchableOpacity<{
   width: 150px;
   height: 130px;
   border-width: 1.5px;
-  border-color: ${({ focused }) =>
-    focused ? '#2FB7B7' : 'rgba(0, 0, 0, 0.1)'};
+  border-color: ${({ focused, theme }) =>
+    focused ? `${theme.colors.main}` : `${theme.colors.inactive}`};
   border-radius: 10px;
   margin-bottom: 10px;
   ${({ isEvenItem }) => (isEvenItem ? 'margin-left: 10px' : '')};

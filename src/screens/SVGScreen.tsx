@@ -110,12 +110,12 @@ export default SVGScreen;
 const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
   height: 100%;
 `;
 
 const LinkTxt = styled(Txt)`
-  color: #2fb7b7;
+  color: ${({ theme }) => theme.colors.main};
   padding: 10px;
 `;
 

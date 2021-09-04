@@ -85,7 +85,7 @@ const Container = styled.TouchableOpacity<{
   height: ${({ height }) => (height ? `${height}px` : '30px')};
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor ? backgroundColor : '#2fb7b7'};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor ? backgroundColor : `${theme.colors.main}`};
   margin: 5px;
 `;

@@ -36,7 +36,7 @@ const TextContainer = styled.Text<{
   fontSize?: number;
   fontWeight?: FontWeight;
 }>`
-  color: ${({ color }) => (color ? color : 'black')};
+  color: ${({ color, theme }) => (color ? color : `${theme.colors.black}`)};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : `16px`)};
   font-weight: ${({ fontWeight }) => {
     switch (fontWeight) {
