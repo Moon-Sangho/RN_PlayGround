@@ -5,7 +5,7 @@ import { TextProps } from 'react-native';
 export type FontWeight = 'thin' | 'regular' | 'medium' | 'bold';
 
 export type TxtProps = TextProps & {
-  children: string;
+  children?: string;
   color?: string;
   fontSize?: number;
   fontWeight?: FontWeight;

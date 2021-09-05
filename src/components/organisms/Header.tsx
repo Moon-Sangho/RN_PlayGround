@@ -10,9 +10,16 @@ type HeaderProps = SafeAreaViewProps & {
   title: string;
   height?: number;
   onBackPress?: () => void;
+  onClosePress?: () => void;
 };
 
-const Header = ({ title, height, onBackPress, ...props }: HeaderProps) => {
+const Header = ({
+  title,
+  height,
+  onBackPress,
+  onClosePress,
+  ...props
+}: HeaderProps) => {
   const navigation = useNavigation<StackNavigationProp<RootStackNavigator>>();
 
   return (
@@ -22,7 +29,14 @@ const Header = ({ title, height, onBackPress, ...props }: HeaderProps) => {
         onPress={onBackPress ? onBackPress : navigation.goBack}
       />
       <Txt fontSize={17}>{title}</Txt>
-      <Btn type="close" onPress={() => navigation.navigate('LandingScreen')} />
+      <Btn
+        type="close"
+        onPress={
+          onClosePress
+            ? onClosePress
+            : () => navigation.navigate('LandingScreen')
+        }
+      />
     </HeaderContainer>
   );
 };

@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
 import Btn from 'src/components/atoms/Btn';
+import AlertModalScreen from 'src/screens/AlertModalScreen';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
@@ -23,6 +24,20 @@ const RootStackNavigator = () => {
         name="LandingScreen"
         component={LandingScreen}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AlertModalScreen"
+        component={AlertModalScreen}
+        options={{
+          headerShown: false,
+          cardOverlayEnabled: true,
+          cardStyle: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+          cardStyleInterpolator: ({ current }) => ({
+            cardStyle: {
+              opacity: current.progress,
+            },
+          }),
+        }}
       />
       <Stack.Screen
         name="SVGScreen"

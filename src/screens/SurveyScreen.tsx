@@ -82,13 +82,31 @@ const SurveyScreen = ({ navigation }: Props) => {
     }
   }, [step, navigation]);
 
+  const onClosePress = useCallback(() => {
+    navigation.navigate('AlertModalScreen', {
+      title: '설문을 그만하시겠습니까?',
+      description: '지금 멈추면 처음부터 다시 진행하셔야 합니다',
+      buttons: [
+        {
+          content: '네',
+          onPress: () => navigation.navigate('LandingScreen'),
+        },
+        {
+          content: '아니오',
+          onPress: () => navigation.goBack(),
+        },
+      ],
+    });
+  }, [navigation]);
+
   return (
     <BottomBtnTemplate
       headerTitle="설문조사"
       btnProps={{ onPress }}
       btnText="결과 확인하기"
       showBottomBtn={step === Steps.Step9 ? true : false}
-      onBackPress={onBackPress}>
+      onBackPress={onBackPress}
+      onClosePress={onClosePress}>
       <Container>{handleForm()}</Container>
     </BottomBtnTemplate>
   );

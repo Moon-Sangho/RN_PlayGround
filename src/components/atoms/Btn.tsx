@@ -6,7 +6,7 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import Txt, { FontWeight } from 'src/components/atoms/Txt';
 
-type BtnProps = TouchableOpacityProps & {
+export type BtnProps = TouchableOpacityProps & {
   type?: 'normal' | 'back' | 'close' | 'bottomBtn';
   children?: string;
   width?: number;
@@ -48,7 +48,7 @@ const Btn = ({
     return (
       <TouchableOpacity {...props}>
         <Txt color={color} fontSize={fontSize} fontWeight={fontWeight}>
-          {children ? children : ''}
+          {children}
         </Txt>
       </TouchableOpacity>
     );
@@ -61,7 +61,7 @@ const Btn = ({
       backgroundColor={backgroundColor}
       {...props}>
       <Txt color={color} fontSize={fontSize} fontWeight={fontWeight}>
-        {children ? children : ''}
+        {children}
       </Txt>
     </Container>
   );

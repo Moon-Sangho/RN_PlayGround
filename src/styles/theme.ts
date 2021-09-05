@@ -12,6 +12,8 @@ export const theme = {
     black: '#000000',
     white: '#ffffff',
     red: '#EE4009',
+    lightGray: '#eaeaea',
+    deepGray: '#555555',
     active: '#313C54',
     inactive: '#e5e5e5',
     disabled: '#a8a8a8',

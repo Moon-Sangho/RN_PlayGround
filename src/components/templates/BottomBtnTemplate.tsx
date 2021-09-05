@@ -15,6 +15,7 @@ type Props = {
   btnText?: string;
   btnProps?: TouchableOpacityProps;
   onBackPress?: () => void;
+  onClosePress?: () => void;
 };
 
 const BottomBtnTemplate = ({
@@ -26,6 +27,7 @@ const BottomBtnTemplate = ({
   btnText,
   btnProps,
   onBackPress,
+  onClosePress,
 }: Props) => {
   const theme = useTheme();
   const backgroundColor = useMemo(() => {
@@ -39,10 +41,14 @@ const BottomBtnTemplate = ({
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor }} edges={['bottom']}>
       <Container>
-        <Header title={headerTitle} onBackPress={onBackPress} />
+        <Header
+          title={headerTitle}
+          onBackPress={onBackPress}
+          onClosePress={onClosePress}
+        />
         {children}
       </Container>
-      {showBottomBtn ? (
+      {showBottomBtn && (
         <BottomBtn
           type="bottomBtn"
           backgroundColor={backgroundColor}
@@ -51,7 +57,7 @@ const BottomBtnTemplate = ({
           {...btnProps}>
           {btnText ? btnText : '확인'}
         </BottomBtn>
-      ) : null}
+      )}
     </SafeAreaView>
   );
 };
