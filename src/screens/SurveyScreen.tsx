@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled from '@emotion/native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { FlatList } from 'react-native';
-import Txt from 'src/components/atoms/Txt';
+import RectangleCard from 'src/components/molecules/RectangleCard';
 import BottomBtnTemplate from 'src/components/templates/BottomBtnTemplate';
 
 type Props = StackScreenProps<RootStackNavigator, 'SurveyScreen'>;
@@ -41,18 +41,13 @@ const SurveyScreen = ({ navigation }: Props) => {
             <FlatList
               bounces={false}
               numColumns={2}
-              data={[
-                { id: 1, value: 1, label: 'label1' },
-                { id: 2, value: 2, label: 'label2' },
-                { id: 3, value: 3, label: 'label3' },
-                { id: 4, value: 4, label: 'label4' },
-                { id: 5, value: 5, label: 'label5' },
-                { id: 6, value: 6, label: 'label6' },
-              ]}
+              data={STEP1_DATA}
               keyExtractor={({ id }) => id.toString()}
               renderItem={({ item }) => (
-                <Card
-                  isEvenItem={item.id % 2 === 0 ? true : false}
+                <RectangleCard
+                  label={item.label}
+                  description={item.description}
+                  isFocused={item.value === form[Steps.Step1]}
                   onPress={() => {
                     setForm(prevForm => ({
                       ...prevForm,
@@ -60,9 +55,11 @@ const SurveyScreen = ({ navigation }: Props) => {
                     }));
                     setStep(Steps.Step2);
                   }}
-                  focused={item.value === form[Steps.Step1]}>
-                  <CardLabel>{item.label}</CardLabel>
-                </Card>
+                  style={{
+                    justifyContent: 'space-between',
+                    marginLeft: item.id % 2 === 0 ? 10 : 0,
+                  }}
+                />
               )}
             />
           </>
@@ -121,21 +118,41 @@ const Container = styled.View`
   padding: 10px 24px 0;
 `;
 
-const Card = styled.TouchableOpacity<{
-  isEvenItem?: boolean;
-  focused?: boolean;
-}>`
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 130px;
-  border-width: 1.5px;
-  border-color: ${({ focused, theme }) =>
-    focused ? `${theme.colors.main}` : `${theme.colors.inactive}`};
-  border-radius: 10px;
-  margin-bottom: 10px;
-  ${({ isEvenItem }) => (isEvenItem ? 'margin-left: 10px' : '')};
-  padding: 10px;
-`;
-
-const CardLabel = styled(Txt)``;
+const STEP1_DATA = [
+  {
+    id: 1,
+    value: 1,
+    label: 'label1',
+    description: 'description1',
+  },
+  {
+    id: 2,
+    value: 2,
+    label: 'label2',
+    description: 'description2',
+  },
+  {
+    id: 3,
+    value: 3,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 4,
+    value: 4,
+    label: 'label4',
+    description: 'description4',
+  },
+  {
+    id: 5,
+    value: 5,
+    label: 'label5',
+    description: 'description5',
+  },
+  {
+    id: 6,
+    value: 6,
+    label: 'label6',
+    description: 'description6',
+  },
+];
