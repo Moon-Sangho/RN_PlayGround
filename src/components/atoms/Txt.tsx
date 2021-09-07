@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/native';
 import { TextProps } from 'react-native';
 
 export type FontWeight = 'thin' | 'regular' | 'medium' | 'bold';
 
 export type TxtProps = TextProps & {
-  children?: string;
+  children?: ReactNode;
   color?: string;
   fontSize?: number;
   fontWeight?: FontWeight;

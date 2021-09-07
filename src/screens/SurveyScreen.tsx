@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from '@emotion/native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { FlatList } from 'react-native';
+import Txt from 'src/components/atoms/Txt';
 import RectangleCard from 'src/components/molecules/RectangleCard';
 import BottomBtnTemplate from 'src/components/templates/BottomBtnTemplate';
 
@@ -32,6 +33,21 @@ const SurveyScreen = ({ navigation }: Props) => {
     [Steps.Step8]: null as number | null,
     [Steps.Step9]: [] as number[] | null,
   });
+
+  const titleObject = useMemo(
+    () => ({
+      [Steps.Step1]: '첫번째 질문 ooo 인가요?',
+      [Steps.Step2]: '두번째 질문 ooo 인가요?',
+      [Steps.Step3]: '세번째 질문 ooo 인가요?',
+      [Steps.Step4]: '네번째 질문 ooo 인가요?',
+      [Steps.Step5]: '다섯번째 질문 ooo 인가요?',
+      [Steps.Step6]: '여섯번째 질문 ooo 인가요?',
+      [Steps.Step7]: '일곱번째 질문 ooo 인가요?',
+      [Steps.Step8]: '여덟째 질문 ooo 인가요?',
+      [Steps.Step9]: '아홉번째 질문 ooo 인가요?',
+    }),
+    [],
+  );
 
   const handleForm = useCallback(() => {
     switch (step) {
@@ -104,6 +120,10 @@ const SurveyScreen = ({ navigation }: Props) => {
       showBottomBtn={step === Steps.Step9 ? true : false}
       onBackPress={onBackPress}
       onClosePress={onClosePress}>
+      <TitleContainer>
+        <SurveyStep>{step < 10 ? '0' + step : step}</SurveyStep>
+        <Title>{titleObject[step]}</Title>
+      </TitleContainer>
       <Container>{handleForm()}</Container>
     </BottomBtnTemplate>
   );
@@ -116,6 +136,19 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   padding: 10px 24px 0;
+`;
+
+const TitleContainer = styled.View`
+  padding: 24px;
+`;
+
+const SurveyStep = styled(Txt)`
+  color: ${({ theme }) => theme.colors.main};
+  margin-bottom: 12px;
+`;
+
+const Title = styled(Txt)`
+  font-size: 18px;
 `;
 
 const STEP1_DATA = [

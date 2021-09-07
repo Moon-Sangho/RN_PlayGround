@@ -43,7 +43,7 @@ const Card = styled.TouchableOpacity<{
   isEvenItem?: boolean;
   isFocused?: boolean;
 }>`
-  width: ${({ width }) => (width ? `${width}px` : `150px;`)};
+  width: ${({ width }) => (width ? `${width}px` : `165px;`)};
   height: ${({ height }) => (height ? `${height}px` : `130px;`)};
   border-width: 1.5px;
   border-color: ${({ isFocused, theme }) =>
