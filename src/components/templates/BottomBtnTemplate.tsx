@@ -11,6 +11,8 @@ type Props = {
   children: ReactNode;
   bottomBtnBackgroundColor?: string;
   disabled?: boolean;
+  percent?: number;
+  showProgressBar?: boolean;
   showBottomBtn?: boolean;
   btnText?: string;
   btnProps?: TouchableOpacityProps;
@@ -23,6 +25,8 @@ const BottomBtnTemplate = ({
   children,
   bottomBtnBackgroundColor = '#313C54',
   disabled = false,
+  percent = 0,
+  showProgressBar = false,
   showBottomBtn = true,
   btnText,
   btnProps,
@@ -43,6 +47,8 @@ const BottomBtnTemplate = ({
       <Container>
         <Header
           title={headerTitle}
+          percent={percent}
+          showProgressBar={showProgressBar}
           onBackPress={onBackPress}
           onClosePress={onClosePress}
         />

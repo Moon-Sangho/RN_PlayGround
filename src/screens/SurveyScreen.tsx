@@ -49,6 +49,10 @@ const SurveyScreen = ({ navigation }: Props) => {
     [],
   );
 
+  const maxStep = Steps.Step9;
+
+  const percent = useMemo(() => (step / maxStep) * 100, [step, maxStep]);
+
   const handleForm = useCallback(() => {
     switch (step) {
       case Steps.Step1:
@@ -115,6 +119,8 @@ const SurveyScreen = ({ navigation }: Props) => {
   return (
     <BottomBtnTemplate
       headerTitle="설문조사"
+      percent={percent}
+      showProgressBar={true}
       btnProps={{ onPress }}
       btnText="결과 확인하기"
       showBottomBtn={step === Steps.Step9 ? true : false}

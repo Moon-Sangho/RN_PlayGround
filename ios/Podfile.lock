@@ -353,7 +353,7 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNReanimated (2.2.1):
+  - RNReanimated (2.2.2):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -588,12 +588,12 @@ SPEC CHECKSUMS:
   ReactCommon: bedc99ed4dae329c4fcf128d0c31b9115e5365ca
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNReanimated: 66013afeb6cb6f234e32aaaf26222b7629417e51
+  RNReanimated: 241c586663f44f19a53883c63375fdd041253960
   RNScreens: 2a71d74b4e530f051f5684c8111d7591176722cf
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: a7de31c64fe738607e7a3803e3f591a4b1df7393
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 48b689890f32f0c2179a2087409ddb288589201d
+PODFILE CHECKSUM: 832d4855c25093530a2e5a59a26d0b5b215db19b
 
 COCOAPODS: 1.10.1
