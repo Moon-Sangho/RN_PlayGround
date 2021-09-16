@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Platform } from 'react-native';
 import { SafeAreaViewProps } from 'react-native-safe-area-context';
 import Btn from 'src/components/atoms/Btn';
 import ProgressBar from 'src/components/atoms/ProgressBar';
@@ -9,7 +10,6 @@ import Txt from 'src/components/atoms/Txt';
 
 type HeaderProps = SafeAreaViewProps & {
   title: string;
-  height?: number;
   percent?: number;
   showProgressBar?: boolean;
   onBackPress?: () => void;
@@ -18,7 +18,6 @@ type HeaderProps = SafeAreaViewProps & {
 
 const Header = ({
   title,
-  height,
   percent = 0,
   showProgressBar = false,
   onBackPress,
@@ -29,7 +28,9 @@ const Header = ({
 
   return (
     <>
-      <Container height={height} {...props}>
+      <Container
+        style={{ height: Platform.select({ ios: 100, android: 60 }) }}
+        {...props}>
         <Btn
           type="back"
           onPress={onBackPress ? onBackPress : navigation.goBack}
@@ -51,12 +52,8 @@ const Header = ({
 
 export default Header;
 
-const Container = styled.SafeAreaView<{
-  height?: number;
-  marginTop?: number;
-}>`
+const Container = styled.SafeAreaView`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${({ height }) => (height ? `${height}px` : `90px`)};
 `;

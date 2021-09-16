@@ -53,40 +53,6 @@ const SurveyScreen = ({ navigation }: Props) => {
 
   const percent = useMemo(() => (step / maxStep) * 100, [step, maxStep]);
 
-  const handleForm = useCallback(() => {
-    switch (step) {
-      case Steps.Step1:
-        return (
-          <>
-            <FlatList
-              bounces={false}
-              numColumns={2}
-              data={STEP1_DATA}
-              keyExtractor={({ id }) => id.toString()}
-              renderItem={({ item }) => (
-                <RectangleCard
-                  label={item.label}
-                  description={item.description}
-                  isFocused={item.value === form[Steps.Step1]}
-                  onPress={() => {
-                    setForm(prevForm => ({
-                      ...prevForm,
-                      [Steps.Step1]: item.value,
-                    }));
-                    setStep(Steps.Step2);
-                  }}
-                  style={{
-                    justifyContent: 'space-between',
-                    marginLeft: item.id % 2 === 0 ? 10 : 0,
-                  }}
-                />
-              )}
-            />
-          </>
-        );
-    }
-  }, [form, step]);
-
   const onPress = () => {
     console.log('test');
   };
@@ -130,7 +96,34 @@ const SurveyScreen = ({ navigation }: Props) => {
         <SurveyStep>{step < 10 ? '0' + step : step}</SurveyStep>
         <Title>{titleObject[step]}</Title>
       </TitleContainer>
-      <Container>{handleForm()}</Container>
+      <Container>
+        {step === Steps.Step1 && (
+          <FlatList
+            bounces={false}
+            numColumns={2}
+            data={STEP1_DATA}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => (
+              <RectangleCard
+                label={item.label}
+                description={item.description}
+                isFocused={item.value === form[Steps.Step1]}
+                onPress={() => {
+                  setForm(prevForm => ({
+                    ...prevForm,
+                    [Steps.Step1]: item.value,
+                  }));
+                  setStep(Steps.Step2);
+                }}
+                style={{
+                  justifyContent: 'space-between',
+                  marginLeft: item.id % 2 === 0 ? 10 : 0,
+                }}
+              />
+            )}
+          />
+        )}
+      </Container>
     </BottomBtnTemplate>
   );
 };
