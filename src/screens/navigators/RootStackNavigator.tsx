@@ -19,7 +19,8 @@ const RootStackNavigator = () => {
       screenOptions={{
         headerStyle: { shadowColor: 'transparent' },
         headerLeft: () => <Btn type="back" onPress={navigation.goBack} />,
-      }}>
+      }}
+      detachInactiveScreens={false}>
       <Stack.Screen
         name="LandingScreen"
         component={LandingScreen}

@@ -72,11 +72,11 @@ const SurveyScreen = ({ navigation }: Props) => {
       buttons: [
         {
           content: '네',
-          onPress: () => navigation.navigate('LandingScreen'),
+          onPress: $navigation => $navigation.navigate('LandingScreen'),
         },
         {
           content: '아니오',
-          onPress: () => navigation.goBack(),
+          onPress: $navigation => $navigation.goBack(),
         },
       ],
     });

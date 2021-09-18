@@ -4,7 +4,9 @@ type RootStackNavigator = {
     title: string;
     buttons: Array<{
       content: string;
-      onPress: () => void;
+      onPress: (
+        navigation: import('@react-navigation/native').NavigationProp<any>,
+      ) => void;
     }>;
     description?: string;
   };
