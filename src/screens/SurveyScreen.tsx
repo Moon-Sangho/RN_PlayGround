@@ -14,10 +14,6 @@ enum Steps {
   Step3,
   Step4,
   Step5,
-  Step6,
-  Step7,
-  Step8,
-  Step9,
 }
 
 const SurveyScreen = ({ navigation }: Props) => {
@@ -27,29 +23,21 @@ const SurveyScreen = ({ navigation }: Props) => {
     [Steps.Step2]: null as number | null,
     [Steps.Step3]: null as number | null,
     [Steps.Step4]: null as number | null,
-    [Steps.Step5]: null as number | null,
-    [Steps.Step6]: null as number | null,
-    [Steps.Step7]: null as number | null,
-    [Steps.Step8]: null as number | null,
-    [Steps.Step9]: [] as number[] | null,
+    [Steps.Step5]: [] as number[],
   });
 
-  const titleObject = useMemo(
+  const titleData = useMemo(
     () => ({
       [Steps.Step1]: '첫번째 질문 ooo 인가요?',
       [Steps.Step2]: '두번째 질문 ooo 인가요?',
       [Steps.Step3]: '세번째 질문 ooo 인가요?',
       [Steps.Step4]: '네번째 질문 ooo 인가요?',
-      [Steps.Step5]: '다섯번째 질문 ooo 인가요?',
-      [Steps.Step6]: '여섯번째 질문 ooo 인가요?',
-      [Steps.Step7]: '일곱번째 질문 ooo 인가요?',
-      [Steps.Step8]: '여덟째 질문 ooo 인가요?',
-      [Steps.Step9]: '아홉번째 질문 ooo 인가요?',
+      [Steps.Step5]: '다섯번째 질문 ooo 인가요? (복수 선택 가능)',
     }),
     [],
   );
 
-  const maxStep = Steps.Step9;
+  const maxStep = Steps.Step5;
 
   const percent = useMemo(() => (step / maxStep) * 100, [step, maxStep]);
 
@@ -89,14 +77,16 @@ const SurveyScreen = ({ navigation }: Props) => {
       showProgressBar={true}
       btnProps={{ onPress }}
       btnText="결과 확인하기"
-      showBottomBtn={step === Steps.Step9 ? true : false}
+      showBottomBtn={step === maxStep ? true : false}
+      disabled={form[Steps.Step5].length <= 0}
       onBackPress={onBackPress}
       onClosePress={onClosePress}>
       <TitleContainer>
         <SurveyStep>{step < 10 ? '0' + step : step}</SurveyStep>
-        <Title>{titleObject[step]}</Title>
+        <Title>{titleData[step]}</Title>
       </TitleContainer>
       <Container>
+        {/* Step 1 */}
         {step === Steps.Step1 && (
           <FlatList
             bounces={false}
@@ -114,6 +104,117 @@ const SurveyScreen = ({ navigation }: Props) => {
                     [Steps.Step1]: item.value,
                   }));
                   setStep(Steps.Step2);
+                }}
+                style={{
+                  justifyContent: 'space-between',
+                  marginLeft: item.id % 2 === 0 ? 10 : 0,
+                }}
+              />
+            )}
+          />
+        )}
+        {/* Step 2 */}
+        {step === Steps.Step2 && (
+          <FlatList
+            bounces={false}
+            data={STEP2_DATA}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => (
+              <RectangleCard
+                label={item.label}
+                description={item.description}
+                isFocused={item.value === form[Steps.Step2]}
+                onPress={() => {
+                  setForm(prevForm => ({
+                    ...prevForm,
+                    [Steps.Step2]: item.value,
+                  }));
+                  setStep(Steps.Step3);
+                }}
+                width={340}
+                height={80}
+                style={{
+                  justifyContent: 'space-between',
+                }}
+              />
+            )}
+          />
+        )}
+        {/* Step 3 */}
+        {step === Steps.Step3 && (
+          <FlatList
+            bounces={false}
+            data={STEP3_DATA}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => (
+              <RectangleCard
+                label={item.label}
+                description={item.description}
+                isFocused={item.value === form[Steps.Step3]}
+                onPress={() => {
+                  setForm(prevForm => ({
+                    ...prevForm,
+                    [Steps.Step3]: item.value,
+                  }));
+                  setStep(Steps.Step4);
+                }}
+                width={340}
+                height={80}
+                style={{
+                  justifyContent: 'space-between',
+                }}
+              />
+            )}
+          />
+        )}
+        {/* Step 4 */}
+        {step === Steps.Step4 && (
+          <FlatList
+            bounces={false}
+            data={STEP4_DATA}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => (
+              <RectangleCard
+                label={item.label}
+                description={item.description}
+                isFocused={item.value === form[Steps.Step4]}
+                onPress={() => {
+                  setForm(prevForm => ({
+                    ...prevForm,
+                    [Steps.Step4]: item.value,
+                  }));
+                  setStep(Steps.Step5);
+                }}
+                width={340}
+                height={80}
+                style={{
+                  justifyContent: 'space-between',
+                }}
+              />
+            )}
+          />
+        )}
+        {/* Step 5 */}
+        {step === Steps.Step5 && (
+          <FlatList
+            bounces={false}
+            numColumns={2}
+            data={STEP5_DATA}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => (
+              <RectangleCard
+                label={item.label}
+                description={item.description}
+                isFocused={form[Steps.Step5]?.includes(item.value)}
+                onPress={() => {
+                  setForm(prevForm => ({
+                    ...prevForm,
+                    [Steps.Step5]: prevForm[Steps.Step5].includes(item.value)
+                      ? prevForm[Steps.Step5].filter(
+                          value => value !== item.value,
+                        )
+                      : prevForm[Steps.Step5].concat(item.value),
+                  }));
                 }}
                 style={{
                   justifyContent: 'space-between',
@@ -186,5 +287,131 @@ const STEP1_DATA = [
     value: 6,
     label: 'label6',
     description: 'description6',
+  },
+];
+
+const STEP2_DATA = [
+  {
+    id: 1,
+    value: 1,
+    label: 'label1',
+    description: 'description1',
+  },
+  {
+    id: 2,
+    value: 2,
+    label: 'label2',
+    description: 'description2',
+  },
+  {
+    id: 3,
+    value: 3,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 4,
+    value: 4,
+    label: 'label4',
+    description: 'description4',
+  },
+];
+
+const STEP3_DATA = [
+  {
+    id: 1,
+    value: 1,
+    label: 'label1',
+    description: 'description1',
+  },
+  {
+    id: 2,
+    value: 2,
+    label: 'label2',
+    description: 'description2',
+  },
+  {
+    id: 3,
+    value: 3,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 4,
+    value: 4,
+    label: 'label4',
+    description: 'description4',
+  },
+  {
+    id: 5,
+    value: 5,
+    label: 'label4',
+    description: 'description4',
+  },
+];
+
+const STEP4_DATA = [
+  {
+    id: 1,
+    value: 1,
+    label: 'label1',
+    description: 'description1',
+  },
+  {
+    id: 2,
+    value: 2,
+    label: 'label2',
+    description: 'description2',
+  },
+  {
+    id: 3,
+    value: 3,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 4,
+    value: 4,
+    label: 'label4',
+    description: 'description4',
+  },
+];
+
+const STEP5_DATA = [
+  {
+    id: 1,
+    value: 1,
+    label: 'label1',
+    description: 'description1',
+  },
+  {
+    id: 2,
+    value: 2,
+    label: 'label2',
+    description: 'description2',
+  },
+  {
+    id: 3,
+    value: 3,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 4,
+    value: 4,
+    label: 'label4',
+    description: 'description4',
+  },
+  {
+    id: 5,
+    value: 5,
+    label: 'label3',
+    description: 'description3',
+  },
+  {
+    id: 6,
+    value: 6,
+    label: 'label4',
+    description: 'description4',
   },
 ];
