@@ -1,4 +1,5 @@
 import React from 'react';
+import SurveyResultScreen from '../SurveyResultScreen';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
@@ -64,6 +65,13 @@ const RootStackNavigator = () => {
       <Stack.Screen
         name="SurveyScreen"
         component={SurveyScreen}
+        options={{
+          header: () => <View />,
+        }}
+      />
+      <Stack.Screen
+        name="SurveyResultScreen"
+        component={SurveyResultScreen}
         options={{
           header: () => <View />,
         }}

@@ -1,17 +1,18 @@
 import React, { ReactNode, useMemo } from 'react';
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import { TouchableOpacityProps } from 'react-native';
+import { Platform, TouchableOpacityProps, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Btn from 'src/components/atoms/Btn';
 import Header from 'src/components/organisms/Header';
 
 type Props = {
-  headerTitle: string;
   children: ReactNode;
   bottomBtnBackgroundColor?: string;
   disabled?: boolean;
   percent?: number;
+  headerTitle?: string;
+  showHeader?: boolean;
   showProgressBar?: boolean;
   showBottomBtn?: boolean;
   btnText?: string;
@@ -26,6 +27,7 @@ const BottomBtnTemplate = ({
   bottomBtnBackgroundColor = '#313C54',
   disabled = false,
   percent = 0,
+  showHeader = true,
   showProgressBar = false,
   showBottomBtn = true,
   btnText,
@@ -45,13 +47,19 @@ const BottomBtnTemplate = ({
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor }} edges={['bottom']}>
       <Container>
-        <Header
-          title={headerTitle}
-          percent={percent}
-          showProgressBar={showProgressBar}
-          onBackPress={onBackPress}
-          onClosePress={onClosePress}
-        />
+        {showHeader ? (
+          <Header
+            title={headerTitle ? headerTitle : ''}
+            percent={percent}
+            showProgressBar={showProgressBar}
+            onBackPress={onBackPress}
+            onClosePress={onClosePress}
+          />
+        ) : (
+          <View
+            style={{ height: Platform.select({ ios: 100, android: 60 }) }}
+          />
+        )}
         {children}
       </Container>
       {showBottomBtn && (

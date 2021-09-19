@@ -41,9 +41,29 @@ const SurveyScreen = ({ navigation }: Props) => {
 
   const percent = useMemo(() => (step / maxStep) * 100, [step, maxStep]);
 
-  const onPress = () => {
-    console.log('test');
-  };
+  const totalValue = useMemo(
+    () =>
+      Object.values(form).reduce((result: number, value) => {
+        if (!value) {
+          return result;
+        }
+
+        if (typeof value === 'object') {
+          return (
+            result + value.reduce(($result, $value) => $result + $value, 0)
+          );
+        }
+
+        return result + value;
+      }, 0),
+    [form],
+  );
+
+  const onPress = useCallback(() => {
+    navigation.navigate('SurveyResultScreen', {
+      totalValue,
+    });
+  }, [navigation, totalValue]);
 
   const onBackPress = useCallback(() => {
     if (step !== Steps.Step1) {
@@ -86,7 +106,6 @@ const SurveyScreen = ({ navigation }: Props) => {
         <Title>{titleData[step]}</Title>
       </TitleContainer>
       <Container>
-        {/* Step 1 */}
         {step === Steps.Step1 && (
           <FlatList
             bounces={false}
@@ -113,7 +132,6 @@ const SurveyScreen = ({ navigation }: Props) => {
             )}
           />
         )}
-        {/* Step 2 */}
         {step === Steps.Step2 && (
           <FlatList
             bounces={false}
@@ -140,7 +158,6 @@ const SurveyScreen = ({ navigation }: Props) => {
             )}
           />
         )}
-        {/* Step 3 */}
         {step === Steps.Step3 && (
           <FlatList
             bounces={false}
@@ -167,7 +184,6 @@ const SurveyScreen = ({ navigation }: Props) => {
             )}
           />
         )}
-        {/* Step 4 */}
         {step === Steps.Step4 && (
           <FlatList
             bounces={false}
@@ -194,7 +210,6 @@ const SurveyScreen = ({ navigation }: Props) => {
             )}
           />
         )}
-        {/* Step 5 */}
         {step === Steps.Step5 && (
           <FlatList
             bounces={false}

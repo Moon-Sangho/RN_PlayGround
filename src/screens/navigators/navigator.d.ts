@@ -14,4 +14,7 @@ type RootStackNavigator = {
   ChartScreen: undefined;
   DropdownScreen: undefined;
   SurveyScreen: undefined;
+  SurveyResultScreen: {
+    totalValue: number;
+  };
 };

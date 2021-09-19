@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { StackScreenProps } from '@react-navigation/stack';
-import LottieView from 'lottie-react-native';
+import AnimatedLottieView from 'lottie-react-native';
 import { SafeAreaView } from 'react-native';
 import Btn from 'src/components/atoms/Btn';
 import Txt from 'src/components/atoms/Txt';
@@ -13,7 +13,7 @@ const LandingScreen = ({ navigation }: Props) => {
     <SafeAreaView>
       <Header>
         <LogoContainer>
-          <LottieView
+          <AnimatedLottieView
             source={require('assets/animations/react-logo.json')}
             autoPlay
             loop
@@ -23,7 +23,7 @@ const LandingScreen = ({ navigation }: Props) => {
       </Header>
       <Container>
         <TopContents>
-          <LottieView
+          <AnimatedLottieView
             source={require('assets/animations/developer.json')}
             autoPlay
             loop
