@@ -1,5 +1,4 @@
 import React from 'react';
-import SurveyResultScreen from '../SurveyResultScreen';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
@@ -8,7 +7,9 @@ import AlertModalScreen from 'src/screens/AlertModalScreen';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
+import RouletteScreen from 'src/screens/RouletteScreen';
 import SVGScreen from 'src/screens/SVGScreen';
+import SurveyResultScreen from 'src/screens/SurveyResultScreen';
 import SurveyScreen from 'src/screens/SurveyScreen';
 
 const Stack = createStackNavigator<RootStackNavigator>();
@@ -74,6 +75,13 @@ const RootStackNavigator = () => {
         component={SurveyResultScreen}
         options={{
           header: () => <View />,
+        }}
+      />
+      <Stack.Screen
+        name="RouletteScreen"
+        component={RouletteScreen}
+        options={{
+          headerTitle: '룰렛',
         }}
       />
     </Stack.Navigator>

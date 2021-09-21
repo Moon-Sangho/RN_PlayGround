@@ -17,4 +17,5 @@ type RootStackNavigator = {
   SurveyResultScreen: {
     totalValue: number;
   };
+  RouletteScreen: undefined;
 };

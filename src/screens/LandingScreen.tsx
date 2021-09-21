@@ -38,6 +38,7 @@ const LandingScreen = ({ navigation }: Props) => {
           <Btn onPress={() => navigation.navigate('SurveyScreen')} width={80}>
             설문조사
           </Btn>
+          <Btn onPress={() => navigation.navigate('RouletteScreen')}>룰렛</Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>
@@ -74,7 +75,6 @@ const TopContents = styled.View`
 
 const BottomContents = styled.View`
   flex-direction: row;
-  justify-content: center;
   width: 300px;
   flex-wrap: wrap;
 `;

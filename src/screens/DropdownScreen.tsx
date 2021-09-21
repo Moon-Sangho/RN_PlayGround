@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/native';
 import dropdownArrow from 'assets/images/dropdown-arrow.svg';
-import { ScrollView } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -59,13 +58,11 @@ const Card = () => {
 const DropdownScreen = () => {
   return (
     <Container>
-      <ScrollView>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </ScrollView>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </Container>
   );
 };
