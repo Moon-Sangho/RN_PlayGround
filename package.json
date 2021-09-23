@@ -15,6 +15,7 @@
     "@react-native-community/masked-view": "0.1.11",
     "@react-navigation/native": "6.0.2",
     "@react-navigation/stack": "6.0.7",
+    "@types/react-native-snap-carousel": "3.8.4",
     "babel-plugin-inline-import": "3.0.0",
     "babel-plugin-module-resolver": "4.1.0",
     "date-fns": "2.23.0",
@@ -26,6 +27,7 @@
     "react-native-reanimated": "^2.2.1",
     "react-native-safe-area-context": "3.3.0",
     "react-native-screens": "3.7.0",
+    "react-native-snap-carousel": "3.9.1",
     "react-native-svg": "12.1.1"
   },
   "devDependencies": {

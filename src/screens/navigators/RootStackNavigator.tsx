@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
 import Btn from 'src/components/atoms/Btn';
 import AlertModalScreen from 'src/screens/AlertModalScreen';
+import CarouselScreen from 'src/screens/CarouselScreen';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
@@ -82,6 +83,13 @@ const RootStackNavigator = () => {
         component={RouletteScreen}
         options={{
           headerTitle: '룰렛',
+        }}
+      />
+      <Stack.Screen
+        name="CarouselScreen"
+        component={CarouselScreen}
+        options={{
+          headerTitle: 'Carousel',
         }}
       />
     </Stack.Navigator>

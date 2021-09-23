@@ -39,6 +39,9 @@ const LandingScreen = ({ navigation }: Props) => {
             설문조사
           </Btn>
           <Btn onPress={() => navigation.navigate('RouletteScreen')}>룰렛</Btn>
+          <Btn onPress={() => navigation.navigate('CarouselScreen')} width={90}>
+            Carousel
+          </Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>

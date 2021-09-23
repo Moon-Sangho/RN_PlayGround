@@ -18,4 +18,5 @@ type RootStackNavigator = {
     totalValue: number;
   };
   RouletteScreen: undefined;
+  CarouselScreen: undefined;
 };
