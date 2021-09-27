@@ -3,7 +3,7 @@
 React-Native CLI와 emotion을 기반으로 UI나 기능 구현 연습을 위해 만든 레포지토리입니다.
 
 <div>
-  <image alt="screen-shot" src="https://user-images.githubusercontent.com/62928788/134802403-85430872-63c7-4077-83e5-ea9126334b08.png" width=400 />
+  <image alt="screen-shot" src="https://user-images.githubusercontent.com/62928788/134898812-f1407574-f44e-4a3b-8e3e-1b02dd2059af.png" width=400 />
 </div>
 
 ## 애플리케이션 실행
