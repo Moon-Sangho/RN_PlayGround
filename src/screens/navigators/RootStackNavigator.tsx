@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollFadeInScreen from '../ScrollFadeInScreen';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
@@ -90,6 +91,13 @@ const RootStackNavigator = () => {
         component={CarouselScreen}
         options={{
           headerTitle: 'Carousel',
+        }}
+      />
+      <Stack.Screen
+        name="ScrollFadeInScreen"
+        component={ScrollFadeInScreen}
+        options={{
+          headerTitle: 'Scroll Fade-In',
         }}
       />
     </Stack.Navigator>

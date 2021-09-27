@@ -42,6 +42,11 @@ const LandingScreen = ({ navigation }: Props) => {
           <Btn onPress={() => navigation.navigate('CarouselScreen')} width={90}>
             Carousel
           </Btn>
+          <Btn
+            onPress={() => navigation.navigate('ScrollFadeInScreen')}
+            width={130}>
+            Scroll Fade-In
+          </Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>
