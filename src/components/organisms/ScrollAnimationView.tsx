@@ -6,7 +6,7 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-export type ScrollAnimationViewProps = {
+export interface ScrollAnimationViewProps {
   scroll: Animated.SharedValue<number>;
   windowHeight: number;
   children: (
@@ -15,9 +15,9 @@ export type ScrollAnimationViewProps = {
     layout: LayoutRectangle | undefined,
   ) => JSX.Element;
   offset?: number;
-};
+}
 
-const ScrollAnimationTemplate = ({
+const ScrollAnimationView = ({
   scroll,
   windowHeight,
   children,
@@ -43,4 +43,4 @@ const ScrollAnimationTemplate = ({
   );
 };
 
-export default ScrollAnimationTemplate;
+export default ScrollAnimationView;
