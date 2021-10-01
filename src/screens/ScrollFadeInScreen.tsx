@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from '@emotion/native';
 import { Dimensions, LayoutRectangle } from 'react-native';
 import Animated, {
   interpolate,
@@ -14,15 +15,14 @@ import ScrollAnimationView, {
 
 interface ComponentProps {
   progress: Readonly<Animated.SharedValue<number>>;
+  windowHeight?: number;
 }
 
 interface SectionProps extends Omit<ScrollAnimationViewProps, 'children'> {
   section: number;
 }
 
-// ! 작업 중
-
-const Section1Component = ({ progress }: ComponentProps) => {
+const Section1Component = ({ progress, windowHeight }: ComponentProps) => {
   const sectionStyle = useAnimatedStyle(() => {
     return {
       opacity: progress.value,
@@ -31,21 +31,16 @@ const Section1Component = ({ progress }: ComponentProps) => {
   });
 
   return (
-    <Animated.View
-      style={[
-        {
-          height: 700,
-          borderWidth: 1,
-          borderColor: 'pink',
-        },
-        sectionStyle,
-      ]}>
+    <SectionView
+      style={sectionStyle}
+      backgroundColor="lightgreen"
+      windowHeight={windowHeight}>
       <Txt>섹션 1</Txt>
-    </Animated.View>
+    </SectionView>
   );
 };
 
-const Section2Component = ({ progress }: ComponentProps) => {
+const Section2Component = ({ progress, windowHeight }: ComponentProps) => {
   const sectionStyle = useAnimatedStyle(() => {
     return {
       opacity: progress.value,
@@ -54,17 +49,16 @@ const Section2Component = ({ progress }: ComponentProps) => {
   });
 
   return (
-    <Animated.View
-      style={[
-        { height: 700, borderWidth: 1, borderColor: 'blue' },
-        sectionStyle,
-      ]}>
+    <SectionView
+      style={sectionStyle}
+      backgroundColor="skyblue"
+      windowHeight={windowHeight}>
       <Txt>섹션 2</Txt>
-    </Animated.View>
+    </SectionView>
   );
 };
 
-const Section3Component = ({ progress }: ComponentProps) => {
+const Section3Component = ({ progress, windowHeight }: ComponentProps) => {
   const sectionStyle = useAnimatedStyle(() => {
     return {
       opacity: progress.value,
@@ -73,26 +67,27 @@ const Section3Component = ({ progress }: ComponentProps) => {
   });
 
   return (
-    <Animated.View
-      style={[
-        { height: 700, borderWidth: 1, borderColor: 'red' },
-        sectionStyle,
-      ]}>
+    <SectionView
+      style={sectionStyle}
+      backgroundColor="pink"
+      windowHeight={windowHeight}>
       <Txt>섹션 3</Txt>
-    </Animated.View>
+    </SectionView>
   );
 };
 
 const Section = ({ section, ...props }: SectionProps) => {
+  const { windowHeight } = props;
+
   return (
     <ScrollAnimationView {...props}>
       {progress =>
         section === 1 ? (
-          <Section1Component progress={progress} />
+          <Section1Component progress={progress} windowHeight={windowHeight} />
         ) : section === 2 ? (
-          <Section2Component progress={progress} />
+          <Section2Component progress={progress} windowHeight={windowHeight} />
         ) : (
-          <Section3Component progress={progress} />
+          <Section3Component progress={progress} windowHeight={windowHeight} />
         )
       }
     </ScrollAnimationView>
@@ -111,30 +106,33 @@ const ScrollFadeInScreen = () => {
 
   return (
     <SafeAreaView
+      edges={['bottom']}
       onLayout={e => setWindowLayout(e.nativeEvent.layout)}
       style={{
-        flex: 1,
         width: windowLayout?.width,
         backgroundColor: 'white',
       }}>
-      <Animated.ScrollView onScroll={scrollHandler}>
+      <Animated.ScrollView onScroll={scrollHandler} scrollEventThrottle={16}>
+        <Main>
+          <Txt>메인</Txt>
+        </Main>
         <Section
           section={1}
           scroll={scroll}
           windowHeight={windowLayout?.height ?? Dimensions.get('window').height}
-          offset={200}
+          offset={500}
         />
         <Section
           section={2}
           scroll={scroll}
           windowHeight={windowLayout?.height ?? Dimensions.get('window').height}
-          offset={200}
+          offset={500}
         />
         <Section
           section={3}
           scroll={scroll}
           windowHeight={windowLayout?.height ?? Dimensions.get('window').height}
-          offset={200}
+          offset={500}
         />
       </Animated.ScrollView>
     </SafeAreaView>
@@ -142,3 +140,20 @@ const ScrollFadeInScreen = () => {
 };
 
 export default ScrollFadeInScreen;
+
+const Main = styled.View`
+  height: 700px;
+  background-color: lightslategray;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SectionView = styled(Animated.View)<{
+  windowHeight?: number;
+  backgroundColor: string;
+}>`
+  height: ${({ windowHeight }) => `${windowHeight}px`};
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+`;
