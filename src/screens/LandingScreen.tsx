@@ -47,6 +47,11 @@ const LandingScreen = ({ navigation }: Props) => {
             width={130}>
             Scroll Fade-In
           </Btn>
+          <Btn
+            onPress={() => navigation.navigate('PasswordSettingScreen')}
+            width={150}>
+            Password Setting
+          </Btn>
         </BottomContents>
       </Container>
     </SafeAreaView>

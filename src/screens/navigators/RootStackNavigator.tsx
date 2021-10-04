@@ -1,5 +1,4 @@
 import React from 'react';
-import ScrollFadeInScreen from '../ScrollFadeInScreen';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
@@ -9,8 +8,10 @@ import CarouselScreen from 'src/screens/CarouselScreen';
 import ChartScreen from 'src/screens/ChartScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
+import PasswordSettingScreen from 'src/screens/PasswordSettingScreen';
 import RouletteScreen from 'src/screens/RouletteScreen';
 import SVGScreen from 'src/screens/SVGScreen';
+import ScrollFadeInScreen from 'src/screens/ScrollFadeInScreen';
 import SurveyResultScreen from 'src/screens/SurveyResultScreen';
 import SurveyScreen from 'src/screens/SurveyScreen';
 
@@ -98,6 +99,13 @@ const RootStackNavigator = () => {
         component={ScrollFadeInScreen}
         options={{
           headerTitle: 'Scroll Fade-In',
+        }}
+      />
+      <Stack.Screen
+        name="PasswordSettingScreen"
+        component={PasswordSettingScreen}
+        options={{
+          headerTitle: 'Password Setting',
         }}
       />
     </Stack.Navigator>

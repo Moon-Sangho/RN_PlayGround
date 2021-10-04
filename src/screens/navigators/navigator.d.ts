@@ -20,4 +20,5 @@ type RootStackNavigator = {
   RouletteScreen: undefined;
   CarouselScreen: undefined;
   ScrollFadeInScreen: undefined;
+  PasswordSettingScreen: undefined;
 };
