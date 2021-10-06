@@ -6,7 +6,7 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import Txt, { FontWeight } from 'src/components/atoms/Txt';
 
-export type BtnProps = TouchableOpacityProps & {
+export interface BtnProps extends TouchableOpacityProps {
   type?: 'normal' | 'back' | 'close' | 'bottomBtn';
   children?: string;
   width?: number;
@@ -15,7 +15,7 @@ export type BtnProps = TouchableOpacityProps & {
   color?: string;
   fontSize?: number;
   fontWeight?: FontWeight;
-};
+}
 
 const Btn = ({
   type = 'normal',

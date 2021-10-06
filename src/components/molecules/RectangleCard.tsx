@@ -3,7 +3,7 @@ import styled from '@emotion/native';
 import { TouchableOpacityProps } from 'react-native';
 import Txt, { TxtProps } from 'src/components/atoms/Txt';
 
-type Props = TouchableOpacityProps & {
+interface Props extends TouchableOpacityProps {
   label: string;
   description?: string;
   width?: number;
@@ -11,7 +11,7 @@ type Props = TouchableOpacityProps & {
   isFocused?: boolean;
   labelProps?: TxtProps;
   descriptionProps?: TxtProps;
-};
+}
 
 const RectangleCard = ({
   label,

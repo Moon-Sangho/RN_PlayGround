@@ -6,14 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import Btn, { BtnProps } from 'src/components/atoms/Btn';
 import Txt from 'src/components/atoms/Txt';
 
-type Props = {
+interface Props {
   title: string;
   buttons: Array<{
     content: string;
     onPress: (navigation: NavigationProp<any>) => void;
   }>;
   description?: string;
-};
+}
 
 const AlertModal = ({ title, buttons, description }: Props) => {
   const theme = useTheme();

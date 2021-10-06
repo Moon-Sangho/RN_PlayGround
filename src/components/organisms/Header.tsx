@@ -8,13 +8,13 @@ import Btn from 'src/components/atoms/Btn';
 import ProgressBar from 'src/components/atoms/ProgressBar';
 import Txt from 'src/components/atoms/Txt';
 
-type HeaderProps = SafeAreaViewProps & {
+interface HeaderProps extends SafeAreaViewProps {
   title: string;
   percent?: number;
   showProgressBar?: boolean;
   onBackPress?: () => void;
   onClosePress?: () => void;
-};
+}
 
 const Header = ({
   title,

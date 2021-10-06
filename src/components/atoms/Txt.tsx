@@ -4,12 +4,12 @@ import { TextProps } from 'react-native';
 
 export type FontWeight = 'thin' | 'regular' | 'medium' | 'bold';
 
-export type TxtProps = TextProps & {
+export interface TxtProps extends TextProps {
   children?: ReactNode;
   color?: string;
   fontSize?: number;
   fontWeight?: FontWeight;
-};
+}
 
 const Txt = ({
   children,

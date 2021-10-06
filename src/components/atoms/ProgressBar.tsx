@@ -6,9 +6,9 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-type Props = {
+interface Props {
   percent: number;
-};
+}
 
 const ProgressBar = ({ percent }: Props) => {
   const width = useSharedValue(percent);

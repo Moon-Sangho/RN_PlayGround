@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Btn from 'src/components/atoms/Btn';
 import Header from 'src/components/organisms/Header';
 
-type Props = {
+interface Props {
   children: ReactNode;
   bottomBtnBackgroundColor?: string;
   disabled?: boolean;
@@ -19,7 +19,7 @@ type Props = {
   btnProps?: TouchableOpacityProps;
   onBackPress?: () => void;
   onClosePress?: () => void;
-};
+}
 
 const BottomBtnTemplate = ({
   headerTitle,
