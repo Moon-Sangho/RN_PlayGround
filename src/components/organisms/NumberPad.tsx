@@ -26,7 +26,7 @@ const NumberPad = ({ onChange, onClear, onBack, style, shuffle }: Props) => {
       {chunks.map((chunk, index) => (
         <NumberPadRow key={index}>
           {chunk.map(number => (
-            <NumberButton key={number}>
+            <NumberButton key={number} onPress={() => onChange(number)}>
               <NumberContent>{number}</NumberContent>
             </NumberButton>
           ))}
@@ -70,6 +70,7 @@ const NumberPadRow = styled.View`
 const NumberButton = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
+  align-items: center;
   padding: 20px 0;
 `;
 

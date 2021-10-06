@@ -1,26 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import NumberPad from 'src/components/organisms/NumberPad';
+import PasswordTemplate from 'src/components/templates/PasswordTemplate';
 
 // ! 작업 중
 
 const PasswordSettingScreen = () => {
-  const onPress = (value = 1) => {
-    console.log(value);
-  };
-
-  const onClear = () => {};
-
-  const onBack = () => {};
-
+  const [password, setPassword] = useState('');
   return (
     <Container edges={['bottom']}>
-      <NumberPad
-        onChange={onPress}
-        onClear={onClear}
-        onBack={onBack}
-        shuffle={true}
+      <PasswordTemplate
+        value={password}
+        description="비밀번호를 입력하세요"
+        onChange={setPassword}
       />
     </Container>
   );
