@@ -105,7 +105,7 @@ const RootStackNavigator = () => {
         name="PasswordSettingScreen"
         component={PasswordSettingScreen}
         options={{
-          headerTitle: 'Password Setting',
+          header: () => <View />,
         }}
       />
     </Stack.Navigator>
