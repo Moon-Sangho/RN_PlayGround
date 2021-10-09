@@ -64,7 +64,10 @@ src
 #### 2. components
 
 프로젝트 전역에서 재사용될 수 있는 컴포넌트들을 모아둔 폴더입니다. [아토믹 디자인](https://kciter.so/posts/effective-atomic-design)을 통해 컴포넌트 관리에 대한 고민을 해보고 싶어서 적용했습니다.
-![image](https://user-images.githubusercontent.com/62928788/136643970-15291df9-90d4-421f-bbe8-04bf3f92a382.png)
+
+<div>
+  <image alt="screen-shot" src="https://user-images.githubusercontent.com/62928788/136643970-15291df9-90d4-421f-bbe8-04bf3f92a382.png" />
+</div>
 
 
 - atoms : 더 이상 쪼갤 수 없는 단위에 해당하는 요소들이 모여 있는 폴더입니다.
