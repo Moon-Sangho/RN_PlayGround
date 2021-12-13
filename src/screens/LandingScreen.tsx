@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from '@emotion/native';
-import { StackScreenProps } from '@react-navigation/stack';
 import AnimatedLottieView from 'lottie-react-native';
+import React from 'react';
 import { SafeAreaView } from 'react-native';
 import Btn from 'src/components/atoms/Btn';
 import Txt from 'src/components/atoms/Txt';
+
+import styled from '@emotion/native';
+import { StackScreenProps } from '@react-navigation/stack';
 
 type Props = StackScreenProps<RootStackNavigator, 'LandingScreen'>;
 
@@ -51,6 +52,11 @@ const LandingScreen = ({ navigation }: Props) => {
             onPress={() => navigation.navigate('PasswordSettingScreen')}
             width={150}>
             Password Setting
+          </Btn>
+          <Btn
+            onPress={() => navigation.navigate('CheckboxScreen')}
+            width={100}>
+            Checkbox
           </Btn>
         </BottomContents>
       </Container>

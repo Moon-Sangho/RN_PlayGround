@@ -4,6 +4,6 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
-  importOrder: ['^react$', '^(?!src)*', '^src'],
+  // importOrder: ['^react$', '^(?!src)*', '^src'],
   'auto-self-close-empty-tag': true,
 };

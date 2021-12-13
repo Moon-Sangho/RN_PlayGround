@@ -21,4 +21,5 @@ type RootStackNavigator = {
   CarouselScreen: undefined;
   ScrollFadeInScreen: undefined;
   PasswordSettingScreen: undefined;
+  CheckboxScreen: undefined;
 };

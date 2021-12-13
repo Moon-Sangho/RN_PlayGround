@@ -1,19 +1,21 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
 import Btn from 'src/components/atoms/Btn';
 import AlertModalScreen from 'src/screens/AlertModalScreen';
 import CarouselScreen from 'src/screens/CarouselScreen';
 import ChartScreen from 'src/screens/ChartScreen';
+import CheckboxScreen from 'src/screens/CheckboxScreen';
 import DropdownScreen from 'src/screens/DropdownScreen';
 import LandingScreen from 'src/screens/LandingScreen';
 import PasswordSettingScreen from 'src/screens/PasswordSettingScreen';
 import RouletteScreen from 'src/screens/RouletteScreen';
-import SVGScreen from 'src/screens/SVGScreen';
 import ScrollFadeInScreen from 'src/screens/ScrollFadeInScreen';
 import SurveyResultScreen from 'src/screens/SurveyResultScreen';
 import SurveyScreen from 'src/screens/SurveyScreen';
+import SVGScreen from 'src/screens/SVGScreen';
+
+import { useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator<RootStackNavigator>();
 
@@ -106,6 +108,13 @@ const RootStackNavigator = () => {
         component={PasswordSettingScreen}
         options={{
           header: () => <View />,
+        }}
+      />
+      <Stack.Screen
+        name="CheckboxScreen"
+        component={CheckboxScreen}
+        options={{
+          headerTitle: 'Checkbox',
         }}
       />
     </Stack.Navigator>
